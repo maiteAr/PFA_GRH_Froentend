@@ -1,0 +1,55 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+     Liste des notes
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#">Notes</a></li>
+      <li class="active">List</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Notes List</h3><a [routerLink]="['/addnote']" class="pull-right"><span class="badge bg-purple" style="font-size: small;padding: 10px;">Ajouter Note</span></a>
+            <div class="form-group" style="width: 200px;margin-left:300px;">
+              <input  class="form-control" type="text" [(ngModel)]="searchTe" name="searchTe" id ="searchTe" placeholder="Search">
+            </div>
+          </div>
+        <div class="box-body">
+      <table id="example1" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Employée Profile</th>
+            <th>Note</th>
+            <th>Année</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let note of notes | async | filter: searchTe;">
+            <td >
+                <div class="col-md-4">
+                <div class="box-body box-profile">
+                  <div class="img-circle">
+                    <img  [src]="note.employee.image" class="img-circle" width="50px" height="50px" >
+                  </div>
+                </div>
+                </div><div class="col-md-8"><br>{{note.employee.cin}} - {{note.employee.lastName}} {{note.employee.firstName}}</div>
+              </td>
+            <td><br>{{note.note}}/20</td>
+            <td><br>{{note.id_annee.id_annee}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  
+

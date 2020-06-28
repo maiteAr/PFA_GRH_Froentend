@@ -1,0 +1,164 @@
+<header class="main-header">
+  <a  class="logo">
+    <span class="logo-mini"><b>GRH</b></span>
+    <span class="logo-lg"><b>GestionRH</b></span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="../assets/img/user8-128x128.jpg" class="user-image" alt="User Image">
+            <span class="hidden-xs">Alexander Pierce</span>
+          </a>
+          
+        </li>
+      <li>
+        <a href="#" ><i class="glyphicon glyphicon-log-out"></i></a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+</header>
+
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="../assets/img/user8-128x128.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p>Alexander Pierce</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="treeview">
+        <a [routerLink]="['/']">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="treeview">  
+        <a href="#">
+          <i class="fa fa-users"></i> <span>Employees</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">                   
+          <li><a [routerLink]="['/employees']"><i class="fa fa-address-book-o"></i> Employee List</a></li>
+          <li><a [routerLink]="['/addemployee']"><i class="fa fa-plus-circle"></i> New Employee</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-briefcase"></i> <span>Notation</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/notes']"><i class="fa fa-briefcase"></i> List</a></li>
+            <li><a [routerLink]="['/addnote']"><i class="fa fa-plus-circle"></i>  New </a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+              <i class="fa fa-building-o"></i> <span>Departaments</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a [routerLink]="['/services']"><i class="fa fa-building-o"></i> List</a></li>
+                <li><a [routerLink]="['/addservice']"><i class="fa fa-plus-circle"></i> New</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-check-square-o"></i> <span>Suivi des absences</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a [routerLink]="['/absences']"><i class="fa fa-check-square-o"></i> List</a></li>
+              <li><a [routerLink]="['/addabsence']"><i class="fa fa-plus-circle"></i> New</a></li>
+              <li><a [routerLink]="['/jour_feriers']"><i class="fa fa-plus-circle"></i>jours feriers</a></li>
+          </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-th-list"></i> <span>Demandes de documents</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a [routerLink]="['/demandes']"><i class="fa fa-th-list"></i> List</a></li>
+            <li><a [routerLink]="['/adddemande']"><i class="fa fa-plus-circle"></i> New</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+      <a href="#">
+        <i class="fa fa-send-o"></i> <span>Demandes de congés</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+          <li><a [routerLink]="['/permissions']"><i class="fa fa-send-o"></i> List</a></li>
+          <li><a [routerLink]="['/addpermission']"><i class="fa fa-plus-circle"></i> New</a></li>
+      </ul>
+    </li>
+    <li class="treeview">
+      <a href="#">
+        <i class="fa fa-send-o"></i> <span>Suivi d'avancement</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+          <li><a [routerLink]="['/promotions']"><i class="fa fa-send-o"></i> List</a></li>
+          <li><a [routerLink]="['/addpromotion']"><i class="fa fa-plus-circle"></i> New</a></li>
+      </ul>
+    </li>
+
+        <li>
+          <a [routerLink]="['/calendar']">
+            <i class="fa fa-calendar"></i> <span>Calendar</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/organigramme']">
+            <i class="fa fa-th"></i> <span>Organigramme</span>
+            
+          </a>
+        </li>
+    </ul>
+  </section>
+</aside>
+
+<div class="content-wrapper">
+  
+      <router-outlet></router-outlet>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>Copyright &copy; 2020 <a href="#">GRH ENSAJ</a>.</strong> All rights
+  reserved.
+</footer>
+<div class="control-sidebar-bg"></div>
