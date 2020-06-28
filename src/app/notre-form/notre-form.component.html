@@ -1,0 +1,70 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+      Ajouter une Note
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#">Les notes</a></li>
+      <li class="active">Add </li>
+    </ol>
+  </section>
+  <!-- Main content -->
+<section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+       
+        <!-- general form elements -->
+        <div class="box box-primary" style=" margin-left: 50%;">
+          <div class="box-header with-border">
+            <h3 class="box-title">Ajouter une Note</h3>
+          </div>
+          <!-- /.box-header -->
+          <div [hidden]="submitted">
+            <form (ngSubmit)="onSubmit()">
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Annee</label>
+                        <select name="id_annee" class="form-control" id="id_annee" [(ngModel)]="note.id_annee" style="width: 100%;">
+                          
+                          <option *ngFor="let annee of annees | async" [ngValue]="annee" >{{annee.id_annee}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Employee</label>
+                        <select name="employee" class="form-control" id="employee" [(ngModel)]="note.employee" style="width: 100%;">
+                          <option *ngFor="let employee of employees | async" [ngValue]="employee" >{{employee.cin}} - {{employee.lastName}} {{employee.firstName}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Note</label>
+                        <span class="badge bg-red" style="font-size:small;margin-left:10px;" *ngIf="note.note > 20"> Maximum required number is 20.</span>
+                         <span class="badge bg-red" style="font-size:small;margin-left:10px;" *ngIf="note.note < 0"> Minimum required number is 0.</span> 
+                        <div class="input-group">
+                        <input type="number" [(ngModel)]="note.note" id="note" name="note" min="0" max="20" class="form-control" required>
+                        <span class="input-group-addon">/20</span>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button type="submit" *ngIf="!note.note || !note.id_annee ||!note.employee || note.note > 20 || note.note < 0 " class="btn btn-lg bg-orange fa fa-plus " disabled> Enregister </button>
+                <button type="submit" *ngIf="note.note  && note.id_annee  && note.employee && note.note < 20 && note.note > 0  " class="btn btn-lg bg-orange fa fa-plus "> Enregister </button>
+                <button type="reset" class="btn bg-olive pull-right">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>

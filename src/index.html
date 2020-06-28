@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gestion du personnel</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="src/assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="src/assets/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="src/assets/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="src/assets/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="src/assets/css/skins/_all-skins.min.css">
+</head>
+<body class="hold-transition lockscreen" id="body" style="background-image: url('https://p3.storage.canalblog.com/34/39/1305055/99585695_o.jpg');height: 800px;
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover;";>
+  <!-- <div class="hold-transition skin-blue sidebar-mini" > -->
+  <div class="lockscreen-wrapper" id="form_id">
+    <div class="lockscreen-logo" style="color: #fffefe;">
+      <a href="" style="color: #fffefe;"><b>Gestion</b>RH</a>
+    </div>
+    <!-- User name -->
+    <div class="lockscreen-name" style="color: #da1136;font-size: 16px;">ADMIN: Ahmed Ali</div>
+  
+    <!-- START LOCK SCREEN ITEM -->
+    <div class="lockscreen-item">
+      <!-- lockscreen image -->
+      <div class="lockscreen-image">
+        <img src="../assets/img/avatar5.png" alt="User Image">
+      </div>
+  
+  <form class="lockscreen-credentials" >
+    <div class="input-group">
+      <input type="password" class="form-control" id="pass" placeholder="password">
+      <div class="input-group-btn">
+        <button type="button" id="btn_id" onclick="submit_by_id()" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- /.lockscreen-item -->
+<div class="help-block text-center" style="color: #fffefe;">
+  Entrez votre mot de passe pour récupérer votre session
+</div>
+
+
+</div>
+
+     <div id="d" class="wrapper"><app-root></app-root></div>  
+  
+</body>
+<script>
+let v = document.getElementById("pass").value;
+if(v ===''){
+  document.getElementById("d").style.display = "none";
+}
+function submit_by_id() {
+var name = document.getElementById("pass").value;
+if (validation()) 
+{
+  console.log(name);
+//document.getElementById("form_id").submit();
+document.getElementById("form_id").style.display = "none";
+document.getElementById("d").style.display = "block";
+document.getElementById("body").style.backgroundImage="";
+document.getElementById("body").className="hold-transition skin-blue sidebar-mini";
+ }else alert("mot de passe incorrect, veuillez réessayer !");
+}
+
+function validation() {
+  var name = document.getElementById("pass").value;
+  if (name == "ADMIN") {
+  return true;
+  } else {
+    
+  return false;
+  
+  }
+  }
+</script>
+<script src="node_modules/chart.js/dist/Chart.js"></script>
+<script src="src/assets/bower_components/moment/moment.js"></script>
+<script src="src/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="src/assets/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="src/assets/js/adminlte.min.js"></script>
+<script src="src/assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script src="src/assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+</html>

@@ -1,0 +1,17 @@
+<h2>Fonction Details</h2> 
+
+<hr/>
+<div *ngIf="fonction">
+  <div>
+    <label><b>Name: </b></label> {{fonction.name}}
+  </div>
+  <div>
+    <label><b>Description: </b></label> {{fonction.description}}
+  </div> 
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Fonction List</button><br>
+
+

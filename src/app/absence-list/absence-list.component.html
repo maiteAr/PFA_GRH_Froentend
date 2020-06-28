@@ -1,0 +1,74 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+      Absence List
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#">Absences</a></li>
+      <li class="active">List</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Absences List</h3><a [routerLink]="['/jour_feriers']" class="pull-right"><span class="badge bg-purple" style="font-size: small;padding: 10px;">Ajouter les jours feriers</span></a>
+            <div class="form-group" style="width: 200px;margin-left:300px;">
+              <input  class="form-control" type="text" [(ngModel)]="searchText" name="searchText" id ="searchText" placeholder="Search">
+            </div>
+          </div>
+          <!-- /.box-header -->
+        <div class="box-body">
+      <table id="example1" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Employee Profil</th>
+            <th>Type</th>
+            <th>Durée</th>
+            <th>date Debut</th>
+            <th>date Fin</th>
+            <th>Etat</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let absence of absences | async | filter: searchText;">
+            <td >
+              <div class="col-md-4">
+              <div class="box-body box-profile">
+                <div class="img-circle">
+                  <img  [src]="absence.employee.image" class="img-circle" width="50px" height="50px" >
+                </div>
+              </div>
+              </div><div class="col-md-8"><br>{{absence.employee.cin}} - {{absence.employee.lastName}} {{absence.employee.firstName}}</div>
+            </td>
+            <td><br>{{absence.type.type}}</td>
+            <td><br>{{absence.nb_jours}}</td>
+           
+            <td><br>{{absence.dateDebut | date :  "dd/MM/y"}}</td>
+            <td><br>{{absence.dateFin | date :  "dd/MM/y"}}</td>
+            <td *ngIf="isExpirationExpired(absence.dateFin) && isExpirationExpired(absence.dateDebut)"><br><span class="label label-success" style="font-size: small;">Absenté</span></td>
+            <td *ngIf="isExpirationExpired(absence.dateDebut) && !isExpirationExpired(absence.dateFin)"><br><span class="label label-warning" style="font-size: small;">Absent</span></td>
+            <td *ngIf="!isExpirationExpired(absence.dateDebut) && !isExpirationExpired(absence.dateDebut)"><br><span class="label label-info" style="font-size: small;">Présent</span></td>
+            <td><br>
+                <button (click)="updateAbsence(absence.id)" class="btn bg-orange glyphicon glyphicon-edit" style="margin-left: 10px"></button>
+                <button (click)="deleteAbsence(absence.id)" class="btn bg-maroon glyphicon glyphicon-trash" style="margin-left: 10px"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+  </div>
+  <!-- /.col -->
+  </div>
+  <!-- /.row -->
+  </section>
+  
+  

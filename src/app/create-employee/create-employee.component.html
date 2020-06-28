@@ -1,0 +1,246 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Create New Employee
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Employees</a></li>
+    <li class="active">Add Employee</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div [hidden]="submitted" >
+      <form (ngSubmit)="onSubmit()">
+        <div class="col-md-6">
+         
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Personal Infos</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">CIN</label>
+                    <input type="text" class="form-control" id="cin" required [(ngModel)]="employee.cin" name="cin" placeholder="CIN">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName" placeholder="First Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName" placeholder="Last Name">
+                  </div>
+                 
+                  <!-- Date -->
+                  <div class="form-group">
+                    <label>date Naissance:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" [(ngModel)]="employee.dateNaissance" id="dateNaissance" name="dateNaissance" class="form-control" required>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+                
+                <div class="form-group">
+                  <label for="name">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="email"  required [(ngModel)]="employee.emailId" class="form-control" id="emailId" name="emailId" placeholder="Email">
+                  </div>
+                </div>
+               
+                
+                </div>
+              
+                <div class="col-md-6">
+                 
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control" [(ngModel)]="employee.gendre" id="gendre" name="gendre"  style="width: 100%;" required>
+                      <option value="Femme">Femme</option>
+                      <option value="Homme">Homme</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Etat</label>
+                    <select class="form-control" id="etat" name="etat" [(ngModel)]="employee.etat" style="width: 100%;"required>
+                      <option value ="C">Célibataire</option>
+                      <option value ="M0">Marié, avec 0 Enfant</option>
+                      <option value ="M1">Marié, avec 1 Enfants</option>
+                      <option value ="M2">Marié, avec 2 Enfants</option>
+                      <option value="M3">Marié, avec 3 Enfants</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Nationalite</label>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                      <input type="text" class="form-control" id="Nationalite" required [(ngModel)]="employee.nationalite" name="Nationalite" placeholder="Nationalite">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Phone:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon"><i class="fa fa-phone"></i>
+                      </div>
+                      <input type="tel" id="tel" name="tel" class="form-control" required [(ngModel)]="employee.tel">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Ville</label>
+                    <input type="text" [(ngModel)]="employee.ville" class="form-control" id="Ville"  name="Ville" placeholder="Ville" required>
+                   </div>
+                  
+              
+                </div>
+                <div class="col-md-12">
+                <div class="form-group">
+                  <label for="name">Address</label>
+                  <textarea type="text" class="form-control" id="Adresse" row="4" required [(ngModel)]="employee.adresse" name="Adresse" placeholder="Address">
+                    </textarea> 
+                </div>
+              </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        <div class="col-md-6">
+        <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Professional Infos</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Grade</label>
+                    <select name="grade" class="form-control" id="grade" [(ngModel)]="employee.grade" placeholder="Select a job" style="width: 100%;">
+                      <option *ngFor="let grade of grades | async" [ngValue]="grade.lib_grade" >{{grade.lib_grade}}</option>
+                    </select>
+                    
+                  </div>
+                  <!-- Date -->
+                  <div class="form-group">
+                    <label>date Embauche:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control" id="dateEmbauche" name="dateEmbauche" required [(ngModel)]="employee.dateEmbauche">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Diplome</label>
+                      <input type="text" class="form-control" id="diplome" required [(ngModel)]="employee.diplome" name="diplome" placeholder="diplome">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Salaire</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">DH</span>
+                    <input type="number" [(ngModel)]="employee.salaire" id="salaire" name="salaire"  class="form-control"  required>
+                    <span class="input-group-addon">.00</span>
+                  </div>
+                  </div>
+                  
+                </div>  
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Service</label>
+                    <select name="service" class="form-control" id="service" [(ngModel)]="employee.service" placeholder="Select a departement" style="width: 100%;">
+                      <option *ngFor="let service of services | async" [ngValue]="service" >{{service.name}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <div>
+                      <img [src]="Image" width="100px" height="100px"><br>
+                      <input type="file" class="form-control" id="image" name="image" style="margin-top: 10px;" (change)="onFileChange($event)">
+                    </div>
+                  </div>
+                  
+                 
+                  <div class="box-footer">
+                    
+                    <button type="submit" *ngIf=" !employee.dateNaissance || !employee.lastName || !employee.firstName || !employee.emailId || !employee.nationalite ||!employee.service || !employee.etat || !employee.tel || !employee.gendre || !employee.adresse || !employee.ville || !employee.cin || !employee.diplome || !employee.salaire || !employee.dateEmbauche || !employee.grade" class="btn btn-lg bg-orange fa fa-plus " disabled> Suivant </button>
+                    <button type="submit" *ngIf=" employee.dateNaissance && employee.lastName && employee.firstName && employee.emailId && employee.nationalite && employee.service && employee.gendre && employee.tel && employee.etat && employee.adresse && employee.ville && employee.cin && employee.diplome && employee.salaire && employee.dateEmbauche && employee.grade " class="btn btn-lg bg-orange fa fa-plus "> Suivant </button>
+                    
+                    <button type="reset" class="btn bg-olive pull-right "> Reset </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div> 
+   <div [hidden]="!submitted"> 
+      <form (ngSubmit)="onVal()">
+        
+        <div class="col-md-12">
+        
+          <div class="box box-primary" >
+            <div class="box-header with-border">
+              <h3 class="box-title">Affecter Echelon</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Echelon</label>
+                    <select name="service" class="form-control" id="id_echelon" [(ngModel)]="echelon.id_echelon" placeholder="Select an echelon" style="width: 100%;">
+                      <option *ngFor="let eff of echelons | async" [ngValue]="eff"  >{{eff.lib_echelon}} - {{eff.indice}} - {{eff.id_grade.lib_grade}}</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>date d'affectation:</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control" id="date_affectation" name="date_affectation" required [(ngModel)]="echelon.date_affectation">
+                    </div>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label>note moyenne</label>
+                    <span class="badge bg-red" style="font-size:small;margin-left:10px;" *ngIf="echelon.note_moyenne > 20"> Maximum required note is 20.</span>
+                    <span class="badge bg-red" style="font-size:small;margin-left:10px;" *ngIf="echelon.note_moyenne< 0"> Minimum required note is 0.</span> 
+                   
+                    <div class="input-group">
+                    <input type="number" [(ngModel)]="echelon.note_moyenne" id="note_moyenne" name="note_moyenne" min="0" max="20" class="form-control"  required>
+                    <span class="input-group-addon">/20</span>
+                  </div>
+                  </div>
+               
+                  <div class="box-footer">
+                    <button type="submit" *ngIf="!echelon.date_affectation || !echelon.note_moyenne || !echelon.id_echelon || echelon.note_moyenne  > 20 || echelon.note_moyenne  < 0 " class="btn btn-lg bg-orange fa fa-plus " disabled> Enregister </button>
+                    <button type="submit" *ngIf="echelon.id_echelon && echelon.date_affectation && echelon.note_moyenne && echelon.note_moyenne < 20 && echelon.note_moyenne > 0" class="btn btn-lg bg-orange fa fa-plus "> Enregister</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div> 
+  </div>
+</section>
+
