@@ -26,6 +26,8 @@ export class PromotionListComponent implements OnInit {
   promotions:Observable<Promotion[]>;
   promotion: Promotion =new Promotion();
   proms:any [];ids=new Array();
+  echelle: AffecterEchelon=new AffecterEchelon();
+  echelles: Observable<AffecterEchelon[]>;
 
   constructor(private employeeService: EmployeeService, private typeService : AffecterTypeAvancementServiceService,
     private affectechelon: AffecterEchelonServiceService,private echelonService: EchelonServiceService,
@@ -43,6 +45,9 @@ export class PromotionListComponent implements OnInit {
       for(var i in data){
         this.ids.push(data[i].employee.id);  
         }
+    });
+    this.affectechelon.getEchelonsList().subscribe(data => {
+      this.echelles=data;
     });
     this.reloadData();
     
@@ -110,10 +115,19 @@ export class PromotionListComponent implements OnInit {
                     console.log(data[f].employee.id);
                     this.promotion=new Promotion(); 
                     this.promotion.employee=data[f].employee;
-                    this.promotion.type="avancement par ancienneté échelon";
+                    
+                    if(data[f].id_echelon.precedent == -1 && Number(data[f].id_echelon.lib_echelon)!=1){
+                      this.promotion.type="avancement par ancienneté Echelle";
+                      this.promotion.nv=1;
+                    }else {
+                      this.promotion.type="avancement par ancienneté Echelon";
+                      this.promotion.nv=Number(data[f].id_echelon.lib_echelon)+1;
+                    }
+                    
                     this.promotion.note_moyenne=m;
-                    this.promotion.nv=data[f].id_echelon.id_echelon+1;
-                    this.promotion.ac=data[f].id_echelon.id_echelon;
+                    
+                    
+                    this.promotion.ac=Number(data[f].id_echelon.lib_echelon);
                     console.log( this.promotion.employee);
                     console.log("new affectation");
                     this.save(this.promotion.employee.id,this.promotion.ac,this.promotion.note_moyenne);
@@ -175,7 +189,7 @@ export class PromotionListComponent implements OnInit {
         this.promotion.status ="approuvé";
 
         this.promotionService.updatePromotion(id,this.promotion).subscribe(data => {
-          //console.log(data);
+         
           this.echelon.employee=this.promotion.employee;
           
           this.echelon.id_echelon=this.affecte;
@@ -216,5 +230,17 @@ deletePromotion(id: number) {
         this.promotions=this.promotionService.getPromotionsList();
       },
       error => console.log(error));
+}
+getEchelle(id,v){
+  console.log(id);
+  console.log(v);
+    for(var i in this.echelles){
+      this.echelle= new AffecterEchelon();
+      if( this.echelles[i].employee.id === id && Number( this.echelles[i].id_echelon.lib_echelon) == v){
+        this.echelle= this.echelles[i];break;
+      }
+    }
+  console.log(this.echelle.id_echelon.id_echelle.id_echelle);
+  return this.echelle.id_echelon.id_echelle.id_echelle;
 }
 }

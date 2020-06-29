@@ -32,6 +32,8 @@
           <th>Email</th>
           <th>Tel</th>
           <th>Grade</th>
+          <th>Echelle</th>
+          <th>Echelon</th>
           <th>Service</th>
           <th>Actions</th>
         </tr>
@@ -51,6 +53,8 @@
           <td>{{employee.emailId}}</td>
           <td>{{employee.tel}}</td>
           <td>{{employee.grade}}</td>
+          <td>{{getEchelle(employee.id)}}</td>
+          <td>{{getEchelon(employee.id)}}</td>
           <td>{{employee.service.name}}</td>
           <td>
               <button (click)="employeeDetails(employee.id)" class="btn btn-info btn-sm glyphicon glyphicon-eye-open" style="margin-left: 5px"></button>
